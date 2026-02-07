@@ -1,16 +1,13 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { getAssetPath } from '@/lib/utils';
+import imagesMetadata from '@/data/images-metadata.json';
 
 export default function GalleryPreview() {
-  // Placeholder images - will be replaced with actual data
-  const previewImages = [
-    '/images/placeholder-1.jpg',
-    '/images/placeholder-2.jpg',
-    '/images/placeholder-3.jpg',
-    '/images/placeholder-4.jpg',
-    '/images/placeholder-5.jpg',
-    '/images/placeholder-6.jpg',
-  ];
+  // Get 6 random images from the gallery
+  const previewImages = imagesMetadata
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 6);
 
   return (
     <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[#FAF7F2]">
@@ -32,15 +29,18 @@ export default function GalleryPreview() {
               href="/gallery"
               className="group relative aspect-square overflow-hidden rounded-lg bg-[#E89B9B]/10"
             >
+              <Image
+                src={getAssetPath(`/images/${image.categories[0]}/${image.filename}`)}
+                alt={image.caption || 'Rosenthal Creative work'}
+                width={600}
+                height={600}
+                className="w-full h-full object-cover"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-[#2C2C2C]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
                 <span className="font-inter text-white font-medium px-6 py-3 border-2 border-white rounded-full">
                   View Project
                 </span>
-              </div>
-              {/* Placeholder - will be replaced with actual images */}
-              <div className="w-full h-full bg-gradient-to-br from-[#F5A6A6] to-[#E89B9B] flex items-center justify-center text-white/20 font-cormorant text-2xl">
-                Gallery {index + 1}
               </div>
             </Link>
           ))}
