@@ -13,7 +13,7 @@ export const COMPANY_INFO = {
   tagline: 'Design + Make',
   description: 'Events + Interiors + Florals + Things',
   established: '2012',
-  email: 'info@rosenthalcreative.com',
+  email: 'hello@rosenthalcreative.com.au',
   instagram: '@rosenthal_creative',
   instagramUrl: 'https://www.instagram.com/rosenthal_creative',
 } as const;
