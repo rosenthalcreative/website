@@ -28,10 +28,28 @@ jobs:
           node-version: "20"
           cache: npm
 
+      - name: Debug - Check config files before Setup Pages
+        run: |
+          echo "=== Config files before Setup Pages ==="
+          ls -la next.config.* || echo "No next.config files found"
+          echo "=== next.config.ts contents (if exists) ==="
+          cat next.config.ts || echo "next.config.ts not found"
+          echo "=== next.config.js contents (if exists) ==="
+          cat next.config.js || echo "next.config.js not found"
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
         with:
           static_site_generator: next
+
+      - name: Debug - Check config files after Setup Pages
+        run: |
+          echo "=== Config files after Setup Pages ==="
+          ls -la next.config.* || echo "No next.config files found"
+          echo "=== next.config.ts contents (if exists) ==="
+          cat next.config.ts || echo "next.config.ts not found"
+          echo "=== next.config.js contents (if exists) ==="
+          cat next.config.js || echo "next.config.js not found"
 
       - name: Install dependencies
         run: npm ci
