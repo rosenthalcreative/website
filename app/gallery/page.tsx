@@ -5,6 +5,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
 import { CATEGORIES, type CategoryKey } from '@/lib/constants';
+import { getAssetPath } from '@/lib/utils';
 
 // Import metadata
 import imagesMetadata from '@/data/images-metadata.json';
@@ -88,7 +89,7 @@ export default function GalleryPage() {
               >
                 <div className="relative overflow-hidden rounded-lg bg-white shadow-md hover:shadow-xl transition-shadow duration-300">
                   <Image
-                    src={`/images/${image.categories[0]}/${image.filename}`}
+                    src={getAssetPath(`/images/${image.categories[0]}/${image.filename}`)}
                     alt={image.caption || 'Rosenthal Creative work'}
                     width={600}
                     height={800}

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { COMPANY_INFO } from '@/lib/constants';
+import { getAssetPath } from '@/lib/utils';
 import { useState } from 'react';
 
 export default function Header() {
@@ -23,7 +24,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3">
             <Image
-              src="/images/logo.jpg"
+              src={getAssetPath("/images/logo.jpg")}
               alt={COMPANY_INFO.name}
               width={50}
               height={50}
