@@ -38,6 +38,22 @@ jobs:
 
       - name: Build with Next.js
         run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: List build output
+        run: ls -la
+
+      - name: Check if out directory exists
+        run: |
+          if [ ! -d "out" ]; then
+            echo "Error: out directory not found!"
+            echo "Directory contents:"
+            ls -la
+            exit 1
+          fi
+          echo "out directory found, contents:"
+          ls -la out/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
